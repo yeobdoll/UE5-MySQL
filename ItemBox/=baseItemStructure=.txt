@@ -1,0 +1,115 @@
+=baseItemStructure=
+itemId	스트링
+itemName	스트링
+shortenName	스트링
+itemType	Item Type
+itemWeight	플로트
+itemSize	플로트
+durability	플로트
+itemMesh	스태틱 메시
+handTool	부울
+anOverlappingNumber	인티저 -> maxEA로 통합
+theCurrentEA	인티저
+maxEA	인티저
+itemImg	이미지
+
+=foodItem=
+theCurrentEA 인티저 (통합)
+maxEA	인티저 (통합)
+hunger	플로트  -> baseValue
+thirst	플로트  -> baseValue2
+
+=gadgetItem=
+뭐 없음.
+
+=medicinelItem=
+healingValue	플로트 -> baseValue 라는 것을 만들자.
+healingTime 플로트-> baseValue2
+maxValue	인티저 -> 아이템 벵스에 maxEA에 같이 놓자. (타입도 같넹)
+theCurrentEA 인티저 (통합하자)
+
+=baseGunBody=
+theCurrentDurability	플로트 -> durability로 통합
+maxDurability	플로트 -> baseValue 
+fireRate	플로트 -> baseValue2 
+verticalRecoil	플로트 
+horizontalRecoil	플로트 
+bulletType	Bullet Type
+
+=bullet=
+bulletType Bullet Type	-> itemType 통합
+bulletSpeed	플로트  -> baseValue 
+RicochetProbability(튕길 확률) 플로트  -> baseValue2
+damage	플로트 
+
+
+effect (출혈 같은 거) 여기로 ㄱㄱ
+
+=barrel=
+baseGunBody	baseGunBody
+barrelType	barrelType	-> itemType 통합 
+verticalRecoil	플로트 
+horizontalRecoil	플로트 
+bulletSpeedMediateAbility	인티저 -> theCurrentEA
+
+[barrelType]
+MuzzleBreak
+Suppressor
+Silencer
+
+<handGuard>
+barrel	barrel
+barrellType	barrelType -> itemType 통합
+railType	railType -> itemType 통합
+verticalRecoil	플로트 
+horizontalRecoil	플로트 
+
+<<rail>>
+railSize	플로트 -> itemSize	플로트
+railType	RailType -> itemType 통합
+
+[railType]
+weaverRail
+PicatinnyRail
+
+<<<attachment>>>
+attachmentType  -> itemType 통합
+maxRange	플로트-> baseValue
+range	플로트 -> baseValue2
+
+[attachmentType]
+bayonet
+silencer
+muzzleBrake
+ammoPad
+dotSight
+ACOG
+
+<<<foreGrip>>>
+verticalRecoil	플로트 
+horizontalRecoil	플로트 
+
+=magazine= (탄창)
+maxBulletEA	인티저  -> maxEA 통합 (같은 인티저)
+theCurrentBulletEA	인티저 -> theCurrentEA 통합
+
+=opticalDevice=
+railSize	인티저  -> theCurrentEA 통합
+magnification (배율)	인티저 -> maxEA 통합 (같은 인티저)
+maxRange	플로트  플로트 -> baseValue
+
+=pistolGrip=
+verticalRecoil	플로트 
+horizontalRecoil	플로트 
+
+=reverse=
+verticalRecoil	플로트 
+horizontalRecoil	플로트	 
+
+[reverseType]
+fixedStock
+foldingStock
+collapsedStock
+straightGripStock
+semiGripStock
+gripStock
