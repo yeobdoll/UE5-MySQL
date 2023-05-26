@@ -72,12 +72,19 @@
 
 import unreal
 import mysql.connector
+from typing import Any
+from typing import List, Tuple
 
 @unreal.uclass()
 class PythonTestClass(unreal.BlueprintFunctionLibrary):
     @unreal.ufunction(static=True, params=[float], ret=str)
     def ConvertNumberToText(number):
         return str(number)
+
+    # @unreal.ufunction(static=True, params=[str, str], ret=bool)
+    # def test(id, pw):
+    #     result = cone.getQuery(id, pw)
+    #     return result
 
     @unreal.ufunction(static=True, params=[str, str], ret=bool)
     def Login(id, pw):
@@ -102,7 +109,7 @@ class PythonTestClass(unreal.BlueprintFunctionLibrary):
             return True
         else:
             return False
-
+        
     @unreal.ufunction(static=True, params=[str, str, str, str, str], ret=bool)
     def Signup(id, pw, name, nickname, email):
         # Connect to MariaDB
@@ -132,6 +139,76 @@ class PythonTestClass(unreal.BlueprintFunctionLibrary):
         db.close()
         return True
 
+    # @unreal.ufunction(static=True, params=[str], ret=str)
+    # def queryAc(_query):
+    #     # Connect to MariaDB
+    #     db = mysql.connector.connect(
+    #         host="rkteam.kr",
+    #         port=3307,
+    #         user="aiquest",
+    #         password="fO4-sv@)Qy",
+    #         database="hzproject"
+    #     )
+
+    #     cursor = db.cursor()
+    #     cursor.execute(_query)
+    #     result = cursor.fetchone()
+    #     return str(result)
+
+    # @unreal.ufunction(static=True, params=[str], ret=str)
+    # def queryAc(_query):
+    #     # Connect to MariaDB
+    #     db = mysql.connector.connect(
+    #         host="rkteam.kr",
+    #         port=3307,
+    #         user="aiquest",
+    #         password="fO4-sv@)Qy",
+    #         database="hzproject"
+    #     )
+
+    #     cursor = db.cursor()
+    #     cursor.execute(_query)
+    #     result = cursor.fetchone()
+
+    #     cursor.close()
+    #     db.close()
+
+    #     if result:
+    #         return str(result)
+    #     else:
+    #         return ""
+
+    @unreal.ufunction(static=True, params=[str], ret=(str, str, int, bool))
+    def queryAc(_query):
+        return "result", "asd", 1, True
+
+
+# class mysqlConnect:
+#     def __init__(self):
+#         self.db = mysql.connector.connect(
+#             host="rkteam.kr",
+#             port=3307,
+#             user="aiquest",
+#             password="fO4-sv@)Qy",
+#             database="hzproject"
+#         )
+    
+#     def getQuery(self, _id, _pw):
+#         cursor = self.db.cursor()
+#         query = "SELECT * FROM USER WHERE ID = %s AND PW = %s"
+#         cursor.execute(query, (_id, _pw))
+#         result = cursor.fetchone()
+
+#         cursor.close()
+
+#         if result:
+#             return True
+#         else:
+#             return False
+
+
+# cone = mysqlConnect()
+# print(cone.getQuery("jsy1234", "project1234"))
 
 # # Example usage of the functions
 # id = "jsy1234"
