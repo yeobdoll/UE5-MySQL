@@ -139,6 +139,20 @@ class PythonTestClass(unreal.BlueprintFunctionLibrary):
         db.close()
         return True
 
+
+    @unreal.ufunction(static=True, params=[str], ret=(str, str, int, bool))
+    def queryAc(value: str) -> Tuple[str, str, int, bool]:
+        # Perform your query or operations here based on the input value
+        # Assign values to the result variables accordingly
+        result_string = "result"
+        result_str = "asd"
+        result_int = 1
+        result_bool = True
+
+        # Return the results as a tuple
+        return result_string, result_str, result_int, result_bool
+    
+
     # @unreal.ufunction(static=True, params=[str], ret=str)
     # def queryAc(_query):
     #     # Connect to MariaDB
